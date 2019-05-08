@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Login</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+<ion-grid>
+  <ion-row justify-content-center>
+  <form #loginform="ngForm" (ngSubmit)="login()">
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center>
+        <h4>LOGIN</h4>
+        <p>{{authService.decodedToken?.unique_name}}</p>
+      </div>
+      <div padding *ngIf="!authService.isAuthenticated()">
+        <ion-item>
+          <ion-input type="text" placeholder="Username" name="username" required [(ngModel)]="user.username" #username="ngModel"></ion-input>
+        </ion-item>
+         <ion-item>
+           <ion-input type="text" placeholder="Password" name="password" required [(ngModel)]="user.password" #password="ngModel"></ion-input>
+         </ion-item>
+      </div>
+      <div padding>
+        <ion-button *ngIf="!authService.isAuthenticated()" [disabled]="!loginform.valid" size="large" expand="block" type="submit">Login</ion-button>
+        <ion-button *ngIf="authService.isAuthenticated()" size="large" expand="block" color="warning" (click)="logOut()">Logout</ion-button>
+      </div>
+      <a [routerLink]="['/register']">Register</a>
+    </ion-col>
+  </form>
+  </ion-row>
+</ion-grid>

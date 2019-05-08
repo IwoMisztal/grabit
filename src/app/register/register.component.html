@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Register</ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+<h2>Register</h2>
+<ion-grid>
+  <ion-row justify-content-center >
+  <form #registerForm="ngForm" (ngSubmit)="register()">
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center>
+        <h4>Sign Up {{isUserLoggedIn | json}}</h4>
+      </div>
+      <div padding>
+        <ion-item>
+          <ion-input type="text" placeholder="Username" name="username" required [(ngModel)]="user.username" #username="ngModel"></ion-input>
+        </ion-item>
+         <ion-item>
+           <ion-input type="text" placeholder="Password" name="password" required [(ngModel)]="user.password" #password="ngModel"></ion-input>
+         </ion-item>
+      </div>
+      <div padding>
+        <ion-button [disabled]="!registerForm.valid" size="large" expand="block" type="submit">Register</ion-button>
+        <ion-button size="large" expand="block" click="cancel()" [routerLink]="['/login']">Cancel</ion-button>
+      </div>
+    </ion-col>
+  </form>
+  </ion-row>
+  </ion-grid>

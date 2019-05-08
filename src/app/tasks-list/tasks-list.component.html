@@ -1,0 +1,5 @@
+<ion-list *ngIf="tasksList && tasksList.length > 0">
+  <ion-item *ngFor="let task of tasksList">
+    {{task.title}}
+  </ion-item>
+</ion-list>

@@ -1,0 +1,11 @@
+.selected {
+    background-color: yellow !important;
+    color: red;
+}
+
+.label-center {
+    display: flex;
+    justify-content: space-between;
+    padding: .5em 3em;
+}
+

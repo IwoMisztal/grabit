@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>{{projectTitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-grid>
+        <ion-row>
+            ADD TASK
+        </ion-row>
+        <ion-row align-content-center>
+            <ion-col size="7" offset="1">
+                <ion-input type="text" name="addTask" [(ngModel)]="newTaskTitle" style="border-bottom: 1px solid #ccc;"></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            PICK TASK
+        </ion-row>
+    <ion-list *ngIf="undoneTasksList && undoneTasksList.length > 0 && undoneTasksList[0] != undefined">
+        <ion-item *ngFor="let task of undoneTasksList" (click)="selectTask(task.id)">
+            <ion-icon name="radio-button-on" *ngIf="task.selected"></ion-icon>
+            <span>
+                {{task.title}}
+            </span>
+            <!-- <ion-icon class="icon-big" name="timer" [routerLink]="['/task-view', projectId]"></ion-icon> -->
+            <!-- <ion-button fill="outline" color="danger" slot="end" (click)="onDeleteTask(task.id)">DELETE</ion-button> -->
+        </ion-item>
+    </ion-list>
+    <ion-button (click)="dismissPopover()" expand="block">SELECT</ion-button>
+  </ion-grid>

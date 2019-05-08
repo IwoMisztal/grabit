@@ -1,6 +1,8 @@
 {
   "name": "grabIT",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "2635dc98"
 }

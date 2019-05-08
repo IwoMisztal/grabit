@@ -1,0 +1,45 @@
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Project: <b>{{projectTitle}}</b></ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content class="">
+<ion-grid>
+        <ion-row>
+            ADD TASK
+        </ion-row>
+        <ion-row align-content-center>
+            <ion-col size="7" offset="1">
+                <ion-input type="text" name="addTask" [(ngModel)]="newTaskTitle" style="border-bottom: 1px solid #ccc;"></ion-input>
+            </ion-col>
+            <ion-col size="3" offset="1">
+                <ion-icon class="icon-big" color="primary" name="add-circle" (click)="addTaskToProject()"></ion-icon>
+            </ion-col>
+        </ion-row>
+        <h2>To Do</h2>
+    <ion-list *ngIf="undoneTasksList.length > 0 && undoneTasksList[0] != undefined">
+        <ion-item *ngFor="let task of undoneTasksList">
+            <!-- <ion-icon name="radio-button-on" *ngIf="task.selected"></ion-icon> -->
+            <span>
+                {{task.title}}
+            </span>
+            <!-- <ion-icon class="icon-big" name="timer" slot="end" [routerLink]="['/task-view', projectId]"></ion-icon> -->
+            <ion-icon class="icon-big" name="timer" slot="end" (click)="goToTask(task.id)"></ion-icon>
+            <ion-icon class="icon-big" name="trash" slot="end" (click)="onDeleteTask(task.id)"></ion-icon>
+            <!-- <ion-button fill="outline" color="primary" slot="end" (click)="selectTask(task.id)">SELECT</ion-button> -->
+            <!-- <ion-button fill="outline" color="danger" slot="end" (click)="onDeleteTask(task.id)">DELETE</ion-button> -->
+        </ion-item>
+    </ion-list>
+
+    <h2>Done tasks</h2>
+    <ion-list *ngIf="doneTasksList.length > 0 && doneTasksList[0] != undefined">
+            <ion-item *ngFor="let task of doneTasksList">
+                <ion-text slot="start">{{task.title}}</ion-text>
+                <ion-text slot="end">Iterations: {{task.finishedIterations}}</ion-text>
+            </ion-item>
+        </ion-list>
+    </ion-grid>
+</ion-content>

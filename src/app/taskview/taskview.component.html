@@ -1,0 +1,28 @@
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Project: <b>{{currentProject?.title}}</b></ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+<ion-content>
+<ion-item *ngIf="activeTask">
+    <ion-label text-center>
+      {{activeTask?.title}}
+    </ion-label>
+    <ion-label text-center>
+      {{activeTask?.finishedIterations}}
+    </ion-label>
+    <ion-item lines="none">
+        <ion-button slot="start" expand="full" class="red" size="big" *ngIf="!activeTask.done" (click)="doneTask(activeTask.id)">done</ion-button>
+    </ion-item>
+    <!-- <ion-icon  name="radio-button-off" *ngIf="!activeTask.done" (click)="doneTask(activeTask.id)"></ion-icon>
+    <ion-icon  name="radio-button-on"  *ngIf="activeTask.done"></ion-icon> -->
+</ion-item>
+<ion-item lines="none">
+  <ion-button slot="start" expand="full" class="red" size="big" (click)="pickTask()"><ion-icon class="icon-big" name="list-box"></ion-icon></ion-button>
+</ion-item>
+
+<app-clock (incrementIteration)="onIncrementIteration()" (timeRunningEmmiter)="onIsTimeRunning($event)"></app-clock>
+</ion-content>

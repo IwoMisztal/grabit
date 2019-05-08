@@ -1,0 +1,109 @@
+// .clock svg .outer {
+//     background: #0d84ce;
+//   }
+
+//   .chart svg {
+//     position: absolute;
+//     top: 0;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     border-radius: 50%;
+//   }
+
+//   .outer {
+//     fill: transparent;
+//     stroke-width: 80%;
+//     stroke-dasharray: 534;
+//     transition: stroke-dashoffset 1s;
+//     stroke: #FE5858;
+//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//   }
+
+//   .animate-clock {
+//     animation: rotate 10s infinite;    
+//   }
+
+//   @keyframes rotate {
+//     0% {
+//       stroke-dashoffset: 534;
+//     }
+//     100% {
+//       stroke-dashoffset: 0;
+//     }
+//   }
+
+//   .clock-wrapper {
+//       position: relative;
+//       height: 200px;
+//       width: 200px;
+//       margin: 0 auto;
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//   }
+
+  // .timer {
+  //     position: absolute;
+  //     top: 50%;
+  //     left: 50%;
+  //     transform: translateX(-50%) !important;
+  //     transform: translateY(-50%) !important;
+  //     text-align: center;
+  // }
+
+.clock-wrapper {
+  height: 250px;
+  width: 250px;
+  position: relative;
+  border-radius: 100%;
+  margin: 40px auto;
+}
+
+.circle {
+  height: 250px;
+  width: 250px;
+  border-radius: 100%;
+  border: 1px solid red;
+  border-color: blue #f14e4e blue #f14e4e;
+}
+
+.circle-rotating {
+  animation: rotate 3s linear 0s infinite normal;
+}
+
+.timer {
+  position: absolute;
+  color: #000;
+  top: 0;
+  left: 0;
+  transform: translateY(80%);
+  text-align: center;
+  width: 250px;
+  font-size: 68px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+#button-start {
+  display: block;
+  padding: .5em 3em;
+  border:0.16em solid rgba(100,100,100,0);
+  border-radius: 10px;
+  text-decoration: none;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  text-align: center;
+  background: #f14e4e;
+  color: #fff;
+  font-size: 16px;
+  margin: 3em auto;
+}
