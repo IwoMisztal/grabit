@@ -36,7 +36,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   addProject() {
-    if (this.keyboard.isVisible == true) {
+    if (this.keyboard.isVisible === true) {
       this.keyboard.hide();
     }
     let blockedAdding = false;
@@ -78,7 +78,7 @@ export class ProjectListComponent implements OnInit {
 
   getNumberOfTasksAssignedToProject(projectId: string) {
     if (this.tasksList != null) {
-      return this.tasksList.filter(x => x.projectId === projectId).length;
+      return this.tasksList.filter(x => x.projectId === projectId && x.done === false).length;
     } else {
       return 0;
     }

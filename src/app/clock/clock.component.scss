@@ -52,16 +52,16 @@
   // }
 
 .clock-wrapper {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   position: relative;
   border-radius: 100%;
-  margin: 40px auto;
+  margin: 20px auto;
 }
 
 .circle {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
   border-radius: 100%;
   border: 1px solid red;
   border-color: blue #f14e4e blue #f14e4e;
@@ -76,10 +76,10 @@
   color: #000;
   top: 0;
   left: 0;
-  transform: translateY(80%);
+  transform: translateY(70%);
   text-align: center;
-  width: 250px;
-  font-size: 68px;
+  width: 200px;
+  font-size: 58px;
 }
 
 @keyframes rotate {
@@ -105,5 +105,5 @@
   background: #f14e4e;
   color: #fff;
   font-size: 16px;
-  margin: 3em auto;
+  margin: 1em auto;
 }

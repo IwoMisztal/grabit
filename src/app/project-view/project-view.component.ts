@@ -22,17 +22,18 @@ export class ProjectViewComponent implements OnInit {
   projectTitle: string;
 
   constructor(private route: ActivatedRoute, private ionicStorage: Storage,
-    private taskService: TasksServiceService, private router: Router) { }
+    private taskService: TasksServiceService, private router: Router) { 
+      router.events.subscribe(() => this.refreshTaskList());
+    }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       if (params['id'] != null) {
         this.projectId = params['id'].toString();
       }
-      this.refreshTaskList();
       this.ionicStorage.get('Projects').then(q => {
         this.projectTitle = q.find(e => e.id == this.projectId).title;
-      })
+      }).then(() => this.refreshTaskList());
     });
   }
 
@@ -71,8 +72,6 @@ export class ProjectViewComponent implements OnInit {
     this.ionicStorage.get('Tasks')
     .then(q => {
       newTasksList = q;
-      // this.ionicStorage.get('Tasks').then(q => console.log(q));
-      // console.log(newTasksList.filter(x => x.id !== taskId));
       this.ionicStorage.set('Tasks', newTasksList.filter(x => x.id !== taskId)).then(() => this.refreshTaskList());
     });
   }

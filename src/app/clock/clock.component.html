@@ -5,9 +5,7 @@
 </div>
 
 <ion-row>
-  <ion-col size="6" offset="3">
     <button id="button-start" (click)="startTimer()" *ngIf="!timeRunning"><ion-icon class="icon-big" name="play"></ion-icon></button>
     <button id="button-start" (click)="pauseTimer()" *ngIf="timeRunning"><ion-icon class="icon-big" name="pause"></ion-icon></button>
     <button *ngIf="timeRunning" id="button-start" (click)="resetTimer()"><ion-icon class="icon-big" name="refresh"></ion-icon></button>
-  </ion-col>
 </ion-row>

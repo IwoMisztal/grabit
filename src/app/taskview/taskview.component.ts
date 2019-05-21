@@ -31,10 +31,9 @@ export class TaskviewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.projectId = params['id'].toString();
+      this.refreshActiveTask();
       this.setCurrentProject();
     });
-    this.setCurrentProject();
-    this.refreshActiveTask();
   }
 
   async pickTask() {
@@ -45,16 +44,14 @@ export class TaskviewComponent implements OnInit {
     });
     popover.present();
     popover.onDidDismiss().then(() =>{
-      this.refreshActiveTask();
+    this.refreshActiveTask();
     })
   }
 
   refreshActiveTask() {
-    console.log("PROJECT ID:::::::::" + this.projectId);
     this.storage.get('Tasks').then(q => {
-      console.log(q);
-      this.activeTask = q.find(e => e.projectId === this.projectId && e.selected === true && e.done === false);
-      console.log(this.currentProject.title);
+      this.activeTask = q.find(e => e.projectId === this.projectId && e.selected === true);
+      console.log(this.activeTask);
     });
   }
 
@@ -65,11 +62,9 @@ export class TaskviewComponent implements OnInit {
       newTasksList.find(e => e.projectId === this.projectId && e.selected == true).done = true;
       this.storage.set('Tasks', newTasksList).then(() => {
         this.refreshActiveTask();
-      });
+      }).then(() => this.router.navigate(['/project-view', this.projectId]));
       this.presentToast('Task marked as done');
-      // this.pickTask();
-      this.router.navigate(['/project-view', this.projectId]);
-    });
+    })
   }
 
   async presentToast(msg: string) {
